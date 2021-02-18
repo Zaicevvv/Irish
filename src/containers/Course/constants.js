@@ -1,0 +1,1 @@
+export const GET_CERT = 'course/get_cert';

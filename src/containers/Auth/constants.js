@@ -1,0 +1,6 @@
+export const CREATE_USER = 'auth/create_user'
+export const LOGIN = 'auth/login'
+export const LOGOUT = 'auth/logout'
+export const GET_CURRENT_USER = 'auth/get_me'
+export const PASSWORD_RECOVERY = 'auth/password_recovery'
+export const PASSWORD_CHANGE = 'auth/password_change'

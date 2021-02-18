@@ -1,0 +1,1 @@
+export const GET_COURSES = 'dashboard/get_courses';

@@ -1,0 +1,12 @@
+export const CREATE_CATEGORY = 'admin/create_category'
+export const GET_CATEGORY = 'admin/get_category'
+export const DELETE_CATEGORY = 'admin/delete_category'
+export const EDIT_CATEGORY = 'admin/edit_category'
+export const GET_CATEGORIES = 'admin/get_categories'
+export const GET_LESSON = 'admin/get_lesson'
+export const ADD_LESSON = 'admin/add_lesson'
+export const DELETE_LESSON = 'admin/delete_lesson'
+export const EDIT_LESSON = 'admin/edit_lesson'
+export const GET_USERS = 'admin/get_cusers'
+export const DELETE_USER = 'admin/delete_cuser'
+

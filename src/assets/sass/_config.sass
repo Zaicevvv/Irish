@@ -1,0 +1,84 @@
+// USER VARIABLES SECTION
+
+$accent: #0518b7 // Accent Color
+$fontsize: 16px // Body Font Size
+$textcolor: #000 // Text Color
+$headercolor: #282c4f // Section headers color
+$system: -apple-system, BlinkMacSystemFont, Arial, sans-serif // System Font Family
+$roboto: Roboto, sans-serif // Roboto Font Family
+$nunito: Nunito, sans-serif // Nunito Font Family
+$rubik: Rubik, sans-serif // Nunito Font Family
+$gradient-text: linear-gradient(104deg, #6d31d1 9%, #0518b7 94%)
+// Bootstrap compatible gutter variable => $gutter
+$grid-gutter-width: 20px
+$gutter: $grid-gutter-width
+$box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.2)
+// IMPORT SECTION
+
+//@import 'node_modules/bootstrap/scss/bootstrap-reboot.scss' // Bootstrap Reboot collection
+//@import 'node_modules/bootstrap/scss/mixins/_breakpoints.scss' // Bootstrap Breakpoints mixin
+// @import 'node_modules/bootstrap/scss/bootstrap-grid.scss' // Optional Bootstrap Grid
+// @import 'node_modules/bootstrap/scss/utilities/_sizing.scss' // Optional Bootstrap Utilites
+
+// FONTS LOAD SECTION
+
+@mixin font($fname, $fstyle, $fweight, $furl)
+	@font-face
+		font-family: $fname
+		font-style: $fstyle
+		font-weight: $fweight
+		// font-display: swap // Uncomment to initially display system fonts
+		src: local($fname), url($furl) format('woff2')
+
+@include font('Roboto', normal, 400, '../fonts/roboto-regular-webfont.woff2')
+@include font('Roboto', italic, 400, '../fonts/roboto-italic-webfont.woff2')
+@include font('Roboto', normal, 700, '../fonts/roboto-bold-webfont.woff2')
+@include font('Roboto', italic, 700, '../fonts/roboto-bolditalic-webfont.woff2')
+
+@include font('Nunito', normal, 300, '../fonts/nunitosans-light-webfont.woff2')
+@include font('Nunito', normal, 400, '../fonts/nunitosans-regular-webfont.woff2')
+@include font('Nunito', normal, 500, '../fonts/nunitosans-semibold-webfont.woff2')
+@include font('Nunito', normal, 600, '../fonts/nunitosans-bold-webfont.woff2')
+
+@include font('Rubik', normal, 300, '../fonts/rubik-light-webfont.woff2')
+@include font('Rubik', normal, 400, '../fonts/rubik-regular-webfont.woff2')
+@include font('Rubik', normal, 500, '../fonts/rubik-medium-webfont.woff2')
+@include font('Rubik', normal, 600, '../fonts/rubik-bold-webfont.woff2')
+
+// GENERAL DOCUMENT STYLES
+
+::placeholder
+	color: #868585
+
+::selection
+	background-color: $accent
+	color: #fff
+
+input, textarea
+	outline: none
+	&:focus:required:invalid
+		border-color: red
+	&:required:valid
+		border-color: green
+
+body
+	font-family: $rubik
+	font-size: $fontsize
+	min-width: 320px
+	position: relative
+	line-height: 1.65
+	overflow-x: hidden
+	color: $textcolor
+	margin: 0
+	padding: 0
+ul
+	list-style: none
+	margin: 0
+	padding: 0
+a
+	color: #000
+	text-decoration: none
+	line-height: 1
+	&:hover
+		color: #000
+		text-decoration: none
