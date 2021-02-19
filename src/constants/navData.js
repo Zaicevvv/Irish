@@ -1,7 +1,6 @@
 import {
   ROUTE_TO_ROOT,
   ROUTE_TO_REMOTE_LEARNING,
-  ROUTE_TO_ALL_COURSES,
   ROUTE_TO_DASHBOARD,
   ROUTE_TO_ADMIN_USERS,
   ROUTE_TO_ADMIN_COURSES,
@@ -24,7 +23,7 @@ export default {
     },
     {
       title: "Courses",
-      route: ROUTE_TO_ALL_COURSES,
+      route: ROUTE_TO_DASHBOARD,
     },
     {
       title: "sponsorship",
