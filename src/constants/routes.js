@@ -1,4 +1,5 @@
 export const ROUTE_TO_ROOT = "/";
+export const ROUTE_TO_REMOTE_LEARNING = "/"
 export const ROUTE_TO_CREATE_ACCOUNT = "/signup";
 export const ROUTE_TO_LOGIN = "/login";
 export const ROUTE_TO_SPONSORSHIP = "/sponsorship";
