@@ -1,5 +1,7 @@
 import {
   ROUTE_TO_ROOT,
+  ROUTE_TO_REMOTE_LEARNING,
+  ROUTE_TO_ALL_COURSES,
   ROUTE_TO_DASHBOARD,
   ROUTE_TO_ADMIN_USERS,
   ROUTE_TO_ADMIN_COURSES,
@@ -7,70 +9,78 @@ import {
   ROUTE_TO_CONTACT,
   ROUTE_TO_ABOUT_US,
   ROUTE_TO_EDUCATORS,
-  ROUTE_TO_PRICING
-} from './routes'
+  ROUTE_TO_PRICING,
+} from "./routes";
 
 export default {
   general: [
     {
-      title: 'HOME',
-      route: ROUTE_TO_ROOT
+      title: "HOME",
+      route: ROUTE_TO_ROOT,
     },
     {
-      title: 'sponsorship',
-      route: ROUTE_TO_SPONSORSHIP
+      title: "Remote Learning",
+      route: ROUTE_TO_REMOTE_LEARNING,
     },
     {
-      title: 'About us',
-      route: ROUTE_TO_ABOUT_US
+      title: "Courses",
+      route: ROUTE_TO_ALL_COURSES,
     },
     {
-      title: 'Educators',
-      route: ROUTE_TO_EDUCATORS
+      title: "sponsorship",
+      route: ROUTE_TO_SPONSORSHIP,
     },
     {
-      title: 'Pricing',
-      route: ROUTE_TO_PRICING
+      title: "About us",
+      route: ROUTE_TO_ABOUT_US,
     },
     {
-      title: 'Contact us',
-      route: ROUTE_TO_CONTACT
-    }
+      title: "Educators",
+      route: ROUTE_TO_EDUCATORS,
+    },
+    {
+      title: "Pricing",
+      route: ROUTE_TO_PRICING,
+    },
+    {
+      title: "Contact us",
+      route: ROUTE_TO_CONTACT,
+    },
   ],
   autorized: [
     {
-      title: 'Courses',
+      title: "Courses",
       route: ROUTE_TO_DASHBOARD,
     },
     {
-      title: 'sponsorship',
-      route: ROUTE_TO_SPONSORSHIP
+      title: "sponsorship",
+      route: ROUTE_TO_SPONSORSHIP,
     },
     {
-      title: 'About us',
-      route: ROUTE_TO_ABOUT_US
+      title: "About us",
+      route: ROUTE_TO_ABOUT_US,
     },
     {
-      title: 'Educators',
-      route: ROUTE_TO_EDUCATORS
+      title: "Educators",
+      route: ROUTE_TO_EDUCATORS,
     },
     {
-      title: 'Pricing',
-      route: ROUTE_TO_PRICING
+      title: "Pricing",
+      route: ROUTE_TO_PRICING,
     },
     {
-      title: 'Contact us',
-      route: ROUTE_TO_CONTACT
-    }
+      title: "Contact us",
+      route: ROUTE_TO_CONTACT,
+    },
   ],
   admin: [
     {
-      title: 'Users',
+      title: "Users",
       route: ROUTE_TO_ADMIN_USERS,
     },
     {
-      title: 'All courses',
-      route: ROUTE_TO_ADMIN_COURSES
-    }
-  ]
-}
+      title: "All courses",
+      route: ROUTE_TO_ADMIN_COURSES,
+    },
+  ],
+};
