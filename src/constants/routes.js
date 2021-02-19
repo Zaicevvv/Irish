@@ -1,5 +1,5 @@
 export const ROUTE_TO_ROOT = "/";
-export const ROUTE_TO_REMOTE_LEARNING = "/";
+export const ROUTE_TO_REMOTE_LEARNING = "/"
 export const ROUTE_TO_CREATE_ACCOUNT = "/signup";
 export const ROUTE_TO_LOGIN = "/login";
 export const ROUTE_TO_SPONSORSHIP = "/sponsorship";
@@ -13,6 +13,7 @@ export const ROUTE_PASSWORD_CHANGE = "/update_password:token?";
 export const ROUTE_TO_PROFILE = "/profile";
 export const ROUTE_TO_DASHBOARD = "/dashboard";
 export const ROUTE_TO_COURSES = "/courses/:id";
+export const routeToCourses = (id) => `/courses/${id}`;
 export const ROUTE_TO_COURSE = "/course/:id";
 export const routeToCourse = (id) => `/course/${id}`;
 export const ROUTE_TO_LESSON = "/course/lesson/:id";
