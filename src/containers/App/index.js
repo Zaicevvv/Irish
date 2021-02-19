@@ -85,7 +85,7 @@ const App = (props) => {
         path={ROUTE_TO_PAYMENTS_INFO}
         component={PaymentsInfo}
       />
-      <PrivateRoute exact path={ROUTE_TO_DASHBOARD} component={Dashboard} />
+      <Route exact path={ROUTE_TO_DASHBOARD} component={Dashboard} />
       <Route exact path={ROUTE_TO_COURSES} component={Courses} />
       <PrivateRoute exact path={ROUTE_TO_COURSE} component={Course} />
       <PrivateRoute exact path={ROUTE_TO_LESSON} component={Lesson} />

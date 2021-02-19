@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { routeToCourses } from "../../constants/routes";
 
-const CourseListItem = ({ course, user }) => (
+const CourseListItem = ({ course }) => (
   <div className="topic-item">
-    <Link to={user ? routeToCourses(course.id) : "/"}>{course.title}</Link>
+    <Link to={routeToCourses(course.id)}>{course.title}</Link>
   </div>
 );
 
