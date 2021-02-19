@@ -1,63 +1,74 @@
-import React, { PureComponent } from 'react';
-import StaticPage from '../../components/StaticPage';
-import headerData from '../../constants/navData';
-import LetterCoursesBox from './LetterCoursesBox';
-import MobileContainer from './MobileContainer';
-import PaymentModal from './PaymentModal'
-import history from '../../history'
-import { routeToCourse } from '../../constants/routes'
+import React, { PureComponent } from "react";
+import StaticPage from "../../components/StaticPage";
+import headerData from "../../constants/navData";
+import LetterCoursesBox from "./LetterCoursesBox";
+import MobileContainer from "./MobileContainer";
+import PaymentModal from "./PaymentModal";
+import history from "../../history";
+import { routeToCourse, ROUTE_TO_LOGIN } from "../../constants/routes";
 
 class Courses extends PureComponent {
-
   state = {
-    showModal: false
-  }
+    showModal: false,
+  };
 
-  onCourseClick = course => {
+  onCourseClick = (course) => {
     const { getCourse } = this.props;
     getCourse(course.id);
-  }
+  };
 
   showModal = () => {
-    this.setState({ showModal: true })
-  }
+    this.setState({ showModal: true });
+  };
 
   hideModal = () => {
-    this.setState({ showModal: false })
-  }
-  goToCourse = course => {
-    const { user } = this.props
-    const user_subscriptions = user.subscription_ids
-    const subscribed = user.subscription
-    const isSubscribedCategory = user_subscriptions.includes(parseInt(course.id, 10))
-    const isPayed = subscribed || isSubscribedCategory
-    if (!isPayed) {
-      this.showModal()
+    this.setState({ showModal: false });
+  };
+  goToCourse = (course) => {
+    const { user } = this.props;
+    if (!user) {
+      history.push(ROUTE_TO_LOGIN);
+      return;
     }
-    else {
+    const user_subscriptions = user.subscription_ids;
+    const subscribed = user.subscription;
+    const isSubscribedCategory = user_subscriptions.includes(
+      parseInt(course.id, 10)
+    );
+    const isPayed = subscribed || isSubscribedCategory;
+    if (!isPayed) {
+      this.showModal();
+    } else {
       const { addToMyCourse } = this.props;
       if (addToMyCourse) {
-        addToMyCourse(course)
+        addToMyCourse(course);
         setTimeout(() => {
-          history.push(routeToCourse(course.id))
-        }, 500)
+          history.push(routeToCourse(course.id));
+        }, 500);
       } else {
-        history.push(routeToCourse(course.id))
+        history.push(routeToCourse(course.id));
       }
     }
-
-  }
+  };
 
   render() {
-    const { courses, letters, user, course, onToken, onTokenSingle, inProcess } = this.props;
+    const {
+      courses,
+      letters,
+      user,
+      course,
+      onToken,
+      onTokenSingle,
+      inProcess,
+    } = this.props;
     return (
-      <StaticPage pageClass='profile' headerData={headerData.autorized}>
+      <StaticPage pageClass="profile" headerData={headerData.autorized}>
         <section className="sec-category-content">
           <div className="container">
             <div className="results-wrapper-large">
               <div className="results-container">
                 <div className="panel-categories">
-                  {letters.map(letter =>
+                  {letters.map((letter) => (
                     <LetterCoursesBox
                       key={letter}
                       letter={letter}
@@ -65,13 +76,13 @@ class Courses extends PureComponent {
                       onCourseClick={this.onCourseClick}
                       course={course}
                     />
-                  )}
+                  ))}
                 </div>
-                {course && course.id &&
+                {course && course.id && (
                   <div className="panel-catresults">
-                  <p className="cat-title">{course.title}</p>
+                    <p className="cat-title">{course.title}</p>
                     <p className="cat-section">Description of this course</p>
-                  <p className="cat-description">{course.description}</p>
+                    <p className="cat-description">{course.description}</p>
                     <p className="cat-section">Modules include:</p>
                     {/* { user && user.role === 'admin' &&
                         <div style={{ float: 'right' }}>
@@ -83,13 +94,13 @@ class Courses extends PureComponent {
                           </button>
                         </div>
                       } */}
-                  {course.tutorials &&
-                      (course.tutorials.map((tutorial, index) =>
+                    {course.tutorials &&
+                      course.tutorials.map((tutorial, index) => (
                         <div
                           key={index}
-                          className='admin-consultation-action-container'
+                          className="admin-consultation-action-container"
                         >
-                          <span className='cat-result'>
+                          <span className="cat-result">
                             {`Lesson ${index + 1}: ${tutorial}`}
                           </span>
                           {/* {subcategory.pdf_url ?
@@ -103,18 +114,25 @@ class Courses extends PureComponent {
                             </button>
                           } */}
                         </div>
-                      ))
-                    }
-                  <span
+                      ))}
+                    <span
                       //to={`/course/${course.id}`}
-                      className='cat-btn-details'
+                      className="cat-btn-details"
                       onClick={() => this.goToCourse(course)}
                     >
-                      <span className='cat-btn-details-text'>GO TO COURSE</span>
-                  </span>
-                  <PaymentModal hideModal={this.hideModal} open={this.state.showModal} onToken={onToken} onTokenSingle={onTokenSingle} user={user} id={course.id} courseName={course.title} />
+                      <span className="cat-btn-details-text">GO TO COURSE</span>
+                    </span>
+                    <PaymentModal
+                      hideModal={this.hideModal}
+                      open={this.state.showModal}
+                      onToken={onToken}
+                      onTokenSingle={onTokenSingle}
+                      user={user}
+                      id={course.id}
+                      courseName={course.title}
+                    />
                   </div>
-                }
+                )}
               </div>
             </div>
             <MobileContainer
@@ -125,7 +143,7 @@ class Courses extends PureComponent {
           </div>
         </section>
       </StaticPage>
-    )
+    );
   }
 }
 
