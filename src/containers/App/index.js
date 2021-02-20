@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import { getToken } from "../../utils/tokenCRUD";
 import {
   ROUTE_TO_ROOT,
+  ROUTE_TO_REMOTE_LEARNING,
   ROUTE_TO_CREATE_ACCOUNT,
   ROUTE_TO_LOGIN,
   ROUTE_TO_PROFILE,
@@ -30,6 +31,7 @@ import PrivateRoute from "../../components/PrivateRoute";
 import AdminRoute from "../../components/AdminRoute";
 import { getCurrentUserAction } from "../Auth/actions";
 import Landing from "../Landing";
+import RemoteLearning from "../RemoteLearning";
 import Login from "../Auth/Login";
 import Signup from "../Auth/Signup";
 import ForgotPassword from "../Auth/ForgotPassword";
@@ -85,6 +87,7 @@ const App = (props) => {
         path={ROUTE_TO_PAYMENTS_INFO}
         component={PaymentsInfo}
       />
+      <Route exact path={ROUTE_TO_REMOTE_LEARNING} component={RemoteLearning} />
       <Route exact path={ROUTE_TO_DASHBOARD} component={Dashboard} />
       <Route exact path={ROUTE_TO_COURSES} component={Courses} />
       <PrivateRoute exact path={ROUTE_TO_COURSE} component={Course} />
