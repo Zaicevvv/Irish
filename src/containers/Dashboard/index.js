@@ -17,7 +17,10 @@ class Dashboard extends PureComponent {
   render() {
     const { courses, letters, user, inProcess } = this.props;
     return (
-      <StaticPage pageClass="profile" headerData={headerData.autorized}>
+      <StaticPage
+        pageClass="profile"
+        headerData={user ? headerData.autorized : headerData.general}
+      >
         <section className="section topics">
           <div className="container-fluid">
             <div className="row justify-content-center list-title">
