@@ -69,6 +69,8 @@ button
     transition: all .3s ease
     position: relative
     margin-bottom: 100px
+    &.home_learning
+        background-image: url('../images/dest/hl_bg.png')
 .hero_subheader
     margin: 0
     margin-bottom: 10px
@@ -82,12 +84,20 @@ button
     margin: 0
     margin-bottom: 25px
 .hero_descr
-    font-size: 18px
+    font-size: 16px
     line-height: 1.5
     margin: 0 auto
     width: 100%
     max-width: 680px
     margin-bottom: 40px
+    &.hl_footer
+        font-weight: 500
+        color: #282c4f
+        font-size: 28px
+        line-height: 45px
+        margin: 160px auto 45px
+    &.hl
+        max-width: 890px
 .hero_logo
     width: 170px
     vertical-align: middle
@@ -1680,10 +1690,39 @@ blockquote
     margin: 0 5px
     border-radius: 5px
     &.current
-        border: 1px solid rgba(0, 0, 0, .2)        
+        border: 1px solid rgba(0, 0, 0, .2)
     a
         color: rgba(0, 0, 0, .5)
         &:active,&:focus
             border: none
             outline: none
+.hl
+    .hl_list
+        font-size: 18px
+        color: #111
+        li
+            margin-bottom: 10px
+            list-style: inside
+.hl_text
+    width: 48%
+.hl_img
+    width: 50%
+.hl_section_title
+    font-weight: 500
+    font-size: 24px
+    line-height: 42px
+    color: #282c4f
+.hl_featured_lesson_gallery
+    columns: 2
+    li
+        width: 48%
+        display: inline-block
+        margin-right: 4%
+        &:last-child
+            margin-right: 0
+        &:nth-child(2)
+            margin-right: 0
+        &.full_item
+            width: 100%
+            margin-right: 0
 @import media

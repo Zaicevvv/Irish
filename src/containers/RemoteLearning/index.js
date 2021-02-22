@@ -5,13 +5,23 @@ import StaticPage from "../../components/StaticPage";
 import headerData from "../../constants/navData";
 import RemoteLearningHero from "./components/RemoteLearningHero";
 import FloatIcons from "../../components/FloatIcons";
-import img1 from "../../assets/images/dest/price1.png";
-import img2 from "../../assets/images/dest/price2.png";
-import FeaturedLessons from "../Landing/components/FeaturedLessons";
+import img1 from "../../assets/images/dest/hl_img1.png";
+import img2 from "../../assets/images/dest/hl_img2.png";
+import w_img1 from "../../assets/images/windpower/1.jpg";
+import w_img2 from "../../assets/images/windpower/2.jpg";
+import w_img3 from "../../assets/images/windpower/3.jpg";
+import w_img4 from "../../assets/images/windpower/4.jpg";
+import w_img5 from "../../assets/images/windpower/5.jpg";
+import w_img6 from "../../assets/images/windpower/6.jpg";
+import FeaturedLessons from "./components/FeaturedLessons";
 import { getCategoriesAction } from "../Landing/actions";
 import css from "./RemoteLearning.module.css";
+import {
+  ROUTE_TO_CREATE_ACCOUNT,
+  ROUTE_TO_DASHBOARD
+} from "../../constants/routes.js";
 
-const items = [img1, img2, img1, img2, img1, img2];
+const items = [w_img1, w_img2, w_img3, w_img4, w_img5, w_img6];
 
 const RemoteLearning = ({ getCategories, courses, user }) => {
   useEffect(() => {
@@ -24,91 +34,79 @@ const RemoteLearning = ({ getCategories, courses, user }) => {
       headerData={user && user.id ? headerData.autorized : headerData.general}
     >
       <RemoteLearningHero />
-      <section className="pricing_page">
+      <section className="pricing_page hl">
         <section className="row justify-between">
-          <div className="pricing_img">
+          <div className="hl_img">
             <img src={img1} className="w-full" />
           </div>
-          <div className="pricing_text">
-            <h4 className="gradient-text ttu">How it works:</h4>
+          <div className="hl_text">
+            <h4 className="hl_section_title">Start your FREE trial now</h4>
             <p>
-              Effective STEM education is not about conveying just the facts of
-              science and engineering, but also an enhanced understanding of the
-              way that scientists and engineers acquire the knowledge and skills
-              to solve complex global issues. We have designed each module
-              around a STEM challenge that involves real world problem solving.
+              Start your free trial now and equip young people with tools needed to develop lasting science and engineering skills.
             </p>
-            <ul style={{ listStyle: "inside" }}>
-              <li>Pick a STEM Challenge Module</li>
-              <li>Register and pay</li>
-              <li>Enjoy full access for a year</li>
-              <li>Complete at your own pace</li>
-              <li>Save time planning and researching</li>
+            <ul className='hl_list'>
+              <li>Encourage creativity, critical thinking and problem solving</li>
+              <li>Identify real world problems and find solutions to global issues</li>
+              <li>Use the engineering design process</li>
+              <li>Apply the scientific method</li>
+              <li>Exploration through inquiry</li>
             </ul>
           </div>
         </section>
         <section className="row justify-between">
-          <div className="pricing_text">
-            <h4 className="gradient-text ttu">Overall school license</h4>
-            <p>
-              The overall school licence is ideal for implementing a premium
-              STEM experience across a whole school or education setting. The
-              modules are packed full of practical hands-on STEAM based
-              activities designed to equip educators  and teachers with the
-              essential skills to implement an engaging curriculum. Unlimited
-              access to all lessons, video guides and teaching resources.{" "}
-            </p>
-            <ul style={{ listStyle: "inside" }}>
-              <li>Up to 50 educators</li>
-              <li>Unlimited access to all content and challenges</li>
-              <li>Unlimited students</li>
+          <div className="hl_text">
+            <h4 className="hl_section_title">Your free trial is valid for 30 days and includes</h4>
+            <ul className='hl_list'>
+              <li>Instructional videos to introduce the topic area and help you
+get ready to experiment and explore.</li>
+              <li>A step by step guide packed with extra information, science
+facts and real world application</li>
+              <li>An equipment list and digital  lab note book. </li>
             </ul>
           </div>
-          <div className="pricing_img">
+          <div className="hl_img">
             <img src={img2} className="w-full" />
           </div>
         </section>
       </section>
       <div className="hero_content">
-        <h4 className="gradient-text ttu">All about air</h4>
-        <h3 className="hero_header" style={{ fontSize: "30px" }}>
-          WIND POWER
+        <div className='container'>
+          <h4 className="gradient-text ttu">All about air</h4>
+          <h3 className="hero_header" style={{ fontSize: "30px" }}>
+            WIND POWER
         </h3>
-        <p className="hero_descr">
-          STEM (science,technology,engineering and math) education is the
-          gateway to 21st century success, forming foundations for critical
-          thinking, creativity, innovation and curiosity. More than ever it is
-          essential for young people  to possess the ability and skills to solve
-          complex problems, analyse information, and know how to gather and
-          evaluate evidence to make decisions.
+          <p className="hero_descr hl">
+            Fun, interactive and hands-on labs designed to explore the science and engineering behind the power of AIR.
+            Use the online instructional videos to learn how to build an air powered car, land safely using air resistance, explore density and put engineering skills to the test to build a wind turbine.
+            This series of hands on labs and experiments are designed to use equipment you’ll already have around the house or readily available
         </p>
-        <div className="row hero_actions justify-center">
-          <Link
-            to="#"
-            className="button fill mr-10"
-            style={{ marginBottom: "30px" }}
-          >
-            START TODAY
+          <div className="row hero_actions justify-center">
+            <Link
+              to={ROUTE_TO_CREATE_ACCOUNT}
+              className="button fill mr-10"
+              style={{ marginBottom: "30px" }}
+            >
+              START TODAY
           </Link>
+          </div>
+          <ul className='hl_featured_lesson_gallery'>
+            {items.map((el, index) => (
+              <li className={ index === 2 || index === 3 ? 'full_item' : null }>
+                <img src={el} className="w-full" />
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul className={css.list}>
-          {items.map((el) => (
-            <li className={css.listItem}>
-              <img src={el} className="w-full" />
-            </li>
-          ))}
-        </ul>
       </div>
       <FeaturedLessons courses={courses} />
       <div className="hero_content">
-        <p className="hero_descr" style={{ marginTop: "100px" }}>
-          STEM (science,technology,engineering and math) education is the
-          gateway to 21st century success, forming foundations for critical
-          thinking, creativity.
+        <p className="hero_descr hl_footer" >
+          Explore our modules and get started today.
+          Packed with practical and engaging STEM based activities.
         </p>
         <div className="row hero_actions justify-center">
           <Link
-            to="#"
+            to={ROUTE_TO_DASHBOARD}
             className="button fill mr-10"
             style={{ marginBottom: "100px" }}
           >
