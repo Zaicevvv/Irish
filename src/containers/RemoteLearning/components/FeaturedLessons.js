@@ -15,11 +15,9 @@ const FeaturedLessons = ({ courses }) => {
   };
 
   const lastCourses = () => {
-    const requiredIds = [6, 7, 8];
-
     // used requiredIds[i] to choose courses what clients want to see at the front page
     let items = courses.reduce((acc, el) => {
-      if (requiredIds.includes(el.id)) {
+      if (el.remote_learning) {
         acc.push(el);
       }
       return acc;
