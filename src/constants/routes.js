@@ -28,3 +28,4 @@ export const routeToCourseEdit = (id) => `/admin/course/${id}`;
 export const ROUTE_TO_LESSON_EDIT = "/admin/:course_id/lesson/:id?";
 export const routeToLessonEdit = (course_id, id) =>
   id ? `/admin/${course_id}/lesson/${id}` : `/admin/${course_id}/lesson/new`;
+export const ROUTE_TO_TESTIMONIALS = "/admin/testimonials";

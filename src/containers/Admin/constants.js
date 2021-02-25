@@ -9,4 +9,4 @@ export const DELETE_LESSON = 'admin/delete_lesson'
 export const EDIT_LESSON = 'admin/edit_lesson'
 export const GET_USERS = 'admin/get_cusers'
 export const DELETE_USER = 'admin/delete_cuser'
-
+export const GET_FEEDBACKS = 'admin/get_feedbacks'

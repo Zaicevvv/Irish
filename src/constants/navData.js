@@ -9,6 +9,7 @@ import {
   ROUTE_TO_ABOUT_US,
   ROUTE_TO_EDUCATORS,
   ROUTE_TO_PRICING,
+  ROUTE_TO_TESTIMONIALS
 } from "./routes";
 
 export default {
@@ -84,6 +85,10 @@ export default {
     {
       title: "All courses",
       route: ROUTE_TO_ADMIN_COURSES,
+    },
+    {
+      title: "Testimonials",
+      route: ROUTE_TO_TESTIMONIALS,
     },
   ],
 };

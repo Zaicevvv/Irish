@@ -25,6 +25,7 @@ import {
   ROUTE_PASSWORD_RECOVERY,
   ROUTE_PASSWORD_CHANGE,
   ROUTE_TO_EDUCATORS,
+  ROUTE_TO_TESTIMONIALS
 } from "../../constants/routes.js";
 import StrictlyPublicRoute from "../../components/StrictlyPublicRoute";
 import PrivateRoute from "../../components/PrivateRoute";
@@ -54,6 +55,7 @@ import ContactUs from "../ContactUs";
 import Pricing from "../Pricing";
 import AboutUs from "../AboutUs";
 import Educators from "../Educators";
+import FeedbackList from "../Admin/Feedbacks";
 
 const App = (props) => {
   useEffect(() => {
@@ -104,6 +106,7 @@ const App = (props) => {
       <AdminRoute exact path={ROUTE_TO_COURSE_EDIT} component={EditCourse} />
       <AdminRoute exact path={ROUTE_TO_LESSON_EDIT} component={EditLesson} />
       <AdminRoute exact path={ROUTE_TO_ADMIN_USERS} component={Users} />
+      <AdminRoute exact path={ROUTE_TO_TESTIMONIALS} component={FeedbackList} />
 
       <Route exact path={ROUTE_TO_SPONSORSHIP} component={Sponsorship} />
       <Route exact path={ROUTE_TO_CONTACT} component={ContactUs} />

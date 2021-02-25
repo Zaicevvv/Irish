@@ -12,7 +12,7 @@ import {
 } from '../actions'
 import { errorNotificationAction, successNotificationAction } from '../../Notifications/actions'
 
-const EditCourse = ({ getUsers, onDelete, users, errorNotification, successNotification, pages, location }) => {
+const UserList = ({ getUsers, onDelete, users, errorNotification, successNotification, pages, location }) => {
 
     const [search, setSearch] = useState()
     const [popupShow, setPopupShow] = useState()
@@ -93,4 +93,4 @@ const mapStateToProps = ({ admin }) => {
     return data
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditCourse)
+export default connect(mapStateToProps, mapDispatchToProps)(UserList)

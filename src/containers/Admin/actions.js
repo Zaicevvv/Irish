@@ -11,7 +11,8 @@ import {
     DELETE_LESSON,
     EDIT_LESSON,
     GET_USERS,
-    DELETE_USER
+    DELETE_USER,
+    GET_FEEDBACKS
 } from './constants'
 import {
     createCategoryApi,
@@ -24,7 +25,8 @@ import {
     deleteLessonApi,
     editLessonApi,
     getUsersApi,
-    deleteUserApi
+    deleteUserApi,
+    getFeedbacksApi
 } from './api'
 
 export const createCategoryAction = createAction(CREATE_CATEGORY, async (data) => createCategoryApi(data))
@@ -38,3 +40,4 @@ export const deleteLessonAction = createAction(DELETE_LESSON, async (id) => dele
 export const editLessonAction = createAction(EDIT_LESSON, async (id, data) => editLessonApi(id, data))
 export const getUsersAction = createAction(GET_USERS, async (params) => getUsersApi(params))
 export const deleteUserAction = createAction(DELETE_USER, async (id) => deleteUserApi(id))
+export const getFeedbacksAction = createAction(GET_FEEDBACKS, async () => getFeedbacksApi())
