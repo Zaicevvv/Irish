@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import placeholder from "../assets/images/dest/ava.png";
 import config from "../config";
 

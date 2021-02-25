@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -8,14 +8,25 @@ import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
 import CloseIcon from "@material-ui/icons/Close";
 
 const QuizForm = ({ item, index, handleChange, deleteImage }) => {
+  const [qImageUrl, setQImageUrl] = useState();
+
   const handleRadioFieldChange = (e) => {
     handleChange(index, "correct", e.target.value == "true");
   };
+
   const handleFieldChange = (key, value) => {
     handleChange(index, key, value);
   };
 
-  const handleDeleteImage = () => deleteImage(index);
+  const changeImageHandler = (file) => {
+    setQImageUrl(URL.createObjectURL(file));
+    handleChange(index, "image", file);
+  };
+
+  const handleDeleteImage = (event) => {
+    event.preventDefault();
+    setQImageUrl(null);
+  };
 
   return (
     <div className="container quiz_flex">
@@ -45,21 +56,21 @@ const QuizForm = ({ item, index, handleChange, deleteImage }) => {
       <div>
         <input
           type="file"
-          id="image"
-          onChange={(e) => handleFieldChange("image", e.target.files)}
+          id="quizImage"
+          name="quizImage"
+          onChange={(e) => changeImageHandler(e.target.files[0])}
           className="quiz_image_input"
           accept="image/*"
         />
         <label
-          htmlFor="image"
           className="quiz_image_input_label"
-          htmlFor="attachment_add"
+          htmlFor="quizImage"
         >
           <span className="quiz_image_input_span">
-            {item.quizImage ? (
+            {qImageUrl ? (
               <>
-                <img src={item.quizImage} alt="image" />
-                <span className="quiz_image_delete" onClick={handleDeleteImage}>
+                <div className='q_image' style={{backgroundImage: 'url(' + qImageUrl + ')'}}></div>
+                <span className="quiz_image_delete" onClick={(e) => handleDeleteImage(e)}>
                   <CloseIcon />
                 </span>
               </>

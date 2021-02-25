@@ -48,6 +48,10 @@ export default {
   ],
   autorized: [
     {
+      title: "Remote Learning",
+      route: ROUTE_TO_REMOTE_LEARNING,
+    },
+    {
       title: "Courses",
       route: ROUTE_TO_DASHBOARD,
     },

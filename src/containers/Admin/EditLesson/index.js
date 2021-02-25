@@ -431,7 +431,7 @@ class EditLesson extends Component {
                             {lesson.attachments_files ? (
                                 <div>
                                     {lesson.attachments_files.map((item, index) => {
-                                        return <div className='row align-center'><a className='attachment_link' href={config.REACT_APP_ROOT + item.document.url} target='_blank'>Document {index + 1}</a> <span className='delete_doc' onClick={() => this.deleteAttachmentHandler(item.id, index)}>X</span></div>
+                                        return <div className='row align-center' key={index}><a className='attachment_link' href={config.REACT_APP_ROOT + item.document.url} target='_blank'>Document {index + 1}</a> <span className='delete_doc' onClick={() => this.deleteAttachmentHandler(item.id, index)}>X</span></div>
                                     })}
                                 </div>
                             ) : null}
@@ -464,7 +464,7 @@ class EditLesson extends Component {
                     <div className='tab' id='quiz'>
                         <p className='tab_header'>Add Quiz</p>
                         {lesson.spd_quizzes_attributes && lesson.spd_quizzes_attributes.map((item, index) => {
-                            return <div className='quiz_form_wrapper' key={index}> <QuizForm item={item} index={index} handleChange={this.handleQuizchange} /> </div>
+                            return <div className='quiz_form_wrapper' key={index}> <QuizForm item={item} index={index} key={index} handleChange={this.handleQuizchange} /> </div>
                         })}
                     </div>
                 </div>
