@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -6,9 +6,16 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
 import CloseIcon from "@material-ui/icons/Close";
+import config from "../../../../config";
 
-const QuizForm = ({ item, index, handleChange, deleteImage }) => {
+const QuizForm = ({ item, index, handleChange }) => {
   const [qImageUrl, setQImageUrl] = useState();
+
+  useEffect(() => {
+    item.image &&
+      item.image.url &&
+      setQImageUrl(config.REACT_APP_ROOT + item.image.url);
+  }, [item]);
 
   const handleRadioFieldChange = (e) => {
     handleChange(index, "correct", e.target.value == "true");
@@ -26,6 +33,7 @@ const QuizForm = ({ item, index, handleChange, deleteImage }) => {
   const handleDeleteImage = (event) => {
     event.preventDefault();
     setQImageUrl(null);
+    handleChange(index, "image", "delete");
   };
 
   return (
@@ -56,21 +64,24 @@ const QuizForm = ({ item, index, handleChange, deleteImage }) => {
       <div>
         <input
           type="file"
-          id="quizImage"
+          id={`quizImage${index}`}
           name="quizImage"
           onChange={(e) => changeImageHandler(e.target.files[0])}
           className="quiz_image_input"
           accept="image/*"
         />
-        <label
-          className="quiz_image_input_label"
-          htmlFor="quizImage"
-        >
+        <label className="quiz_image_input_label" htmlFor={`quizImage${index}`}>
           <span className="quiz_image_input_span">
             {qImageUrl ? (
               <>
-                <div className='q_image' style={{backgroundImage: 'url(' + qImageUrl + ')'}}></div>
-                <span className="quiz_image_delete" onClick={(e) => handleDeleteImage(e)}>
+                <div
+                  className="q_image"
+                  style={{ backgroundImage: "url(" + qImageUrl + ")" }}
+                ></div>
+                <span
+                  className="quiz_image_delete"
+                  onClick={(e) => handleDeleteImage(e)}
+                >
                   <CloseIcon />
                 </span>
               </>
