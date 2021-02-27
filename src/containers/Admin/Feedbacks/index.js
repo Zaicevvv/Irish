@@ -4,12 +4,17 @@ import { Link } from "react-router-dom";
 import StaticPage from "../../../components/StaticPage";
 import headerData from "../../../constants/navData";
 import FeedbackItem from "./components/FeedbackItem";
-import { getFeedbacksAction, deleteFeedbackAction } from "../actions";
+import {
+  getFeedbacksAction,
+  deleteFeedbackAction,
+  addFeedbackAction,
+  editFeedbackAction,
+} from "../actions";
 import {
   errorNotificationAction,
   successNotificationAction,
 } from "../../Notifications/actions";
-import { ROUTE_TO_CREATE_TESTIMONIAL } from "../../../constants/routes";
+import { ROUTE_TO_TESTIMONIAL } from "../../../constants/routes";
 
 const FeedbackList = ({
   getFeedbacks,
@@ -43,7 +48,7 @@ const FeedbackList = ({
   return (
     <StaticPage pageClass="feedbacks_list" headerData={headerData.admin}>
       <div className="container">
-        <Link to={ROUTE_TO_CREATE_TESTIMONIAL} className="add_testimonial_btn">
+        <Link to={ROUTE_TO_TESTIMONIAL} className="add_testimonial_btn">
           Add testimonial
         </Link>
         <table className="feedbacks_table">
@@ -68,7 +73,9 @@ const FeedbackList = ({
 
 const mapDispatchToProps = (dispatch) => ({
   getFeedbacks: (params) => dispatch(getFeedbacksAction(params)),
-  // onDelete: (id) => dispatch(deleteFeedbackAction(id)),
+  onCreate: (params) => dispatch(addFeedbackAction(params)),
+  onEdit: (id, data) => dispatch(editFeedbackAction(id, data)),
+  //   onDelete: (id) => dispatch(deleteFeedbackAction(id)),
   successNotification: (message) =>
     dispatch(successNotificationAction(message)),
   errorNotification: (message) => dispatch(errorNotificationAction(message)),
