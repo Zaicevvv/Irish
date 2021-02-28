@@ -20,10 +20,10 @@ const FeedbackItem = ({ item, index, handlerDelete, popupShow, setPopupShow }) =
     return (
         <tr className='container feedbacklist_item'>
             <td>
-                <p className='feedback_name'>{`${item.first_name} ${item.last_name}`}</p>
+                <p className='feedback_name'>{item.title}</p>
             </td>
             <td>
-                <p className='feedback_email'>{item.email}</p>
+                <p className='feedback_email'>{item.description}</p>
             </td>
             <td>
                 <p className='feedback_created'>{item.created_at}</p>

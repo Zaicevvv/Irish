@@ -8,7 +8,7 @@ import config from "../../../config";
 const FeaturedLessons = ({ courses }) => {
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,

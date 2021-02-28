@@ -73,8 +73,8 @@ export const deleteUserAction = createAction(DELETE_USER, async (id) =>
 export const getFeedbacksAction = createAction(GET_FEEDBACKS, async () =>
   getFeedbacksApi()
 );
-export const addFeedbackAction = createAction(CREATE_FEEDBACK, async () =>
-  addFeedbackApi()
+export const addFeedbackAction = createAction(CREATE_FEEDBACK, async (params) =>
+  addFeedbackApi(params)
 );
 export const editFeedbackAction = createAction(EDIT_FEEDBACK, async () =>
   editFeedbackApi()

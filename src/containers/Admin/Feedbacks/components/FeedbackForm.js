@@ -39,11 +39,14 @@ const FeedbackForm = ({
   const handleChange = (e) =>
     setTestimonial({ ...testimonial, [e.target.id]: e.target.value });
 
-  const handleSubmit = () =>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(testimonial);
     props && props.match.params.id
       ? onEdit(props.match.params.id, { testimonial: testimonial })
       : onCreate({ testimonial: testimonial });
-
+  }
+  
   // const handleSubmit = () => {
   //   let body = new FormData();
 
