@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import Create from '@material-ui/icons/Create';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -28,8 +30,10 @@ const FeedbackItem = ({ item, index, handlerDelete, popupShow, setPopupShow }) =
             <td>
                 <p className='feedback_created'>{item.created_at}</p>
             </td>
+            
             <td className='feedback_item_actions'>
-                <a href='#' onClick={handleClickOpen} ><DeleteForeverIcon /></a>
+            <Link to={"/admin/testimonial/" + item.id} className="feedback_icon"><Create /></Link>
+                <a href='#' className="feedback_icon" onClick={handleClickOpen} ><DeleteForeverIcon /></a>
             </td>
 
             <Dialog

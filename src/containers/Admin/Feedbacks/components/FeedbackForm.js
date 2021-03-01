@@ -21,7 +21,7 @@ const FeedbackForm = ({
   feedbacks,
   errorNotification,
   successNotification,
-  props,
+  match,
 }) => {
   const [testimonial, setTestimonial] = useState({
     title: "",
@@ -29,11 +29,13 @@ const FeedbackForm = ({
   });
 
   useEffect(() => {
-    if (props && props.match.params.id) {
+    if (match.params.id) {
       getFeedbacks();
 
-      setTestimonial(feedbacks[props.match.params.id]);
+      setTimeout(() => {setTestimonial(...feedbacks.find(el => el.id === Number(match.params.id)))}, [1000]);
     }
+    // console.log(...feedbacks.find(el => el.id === Number(match.params.id)))
+    setTimeout(()=>{console.log(feedbacks)},[1000])
   }, []);
 
   const handleChange = (e) =>
@@ -42,8 +44,8 @@ const FeedbackForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(testimonial);
-    props && props.match.params.id
-      ? onEdit(props.match.params.id, { testimonial: testimonial })
+    match.params.id
+      ? onEdit(match.params.id, { testimonial: testimonial })
       : onCreate({ testimonial: testimonial });
   }
   
@@ -64,13 +66,13 @@ const FeedbackForm = ({
               Cancel
             </Link>
             <button type="submit">
-              {props && props.match.params.id
+              {match.params.id
                 ? "EDIT FEEDBACK"
                 : "ADD FEEDBACK"}
             </button>
           </div>
           <h3>
-            {props && props.match.params.id
+            {match.params.id
               ? "Edit testimonial"
               : "Create testimonial"}
           </h3>

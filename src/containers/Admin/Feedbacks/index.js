@@ -29,6 +29,7 @@ const FeedbackList = ({
 
   useEffect(() => {
     getFeedbacks();
+    setTimeout(()=>{console.log(feedbacks)},[2000])
   }, []);
 
   const handlerDelete = async (id) => {
@@ -53,7 +54,7 @@ const FeedbackList = ({
         </Link>
         <table className="feedbacks_table">
           {feedbacks
-            ? feedbacks.map((item, index) => {
+            && feedbacks.map((item, index) => {
                 return (
                   <FeedbackItem
                     popupShow={popupShow}
@@ -64,7 +65,7 @@ const FeedbackList = ({
                   />
                 );
               })
-            : null}
+            }
         </table>
       </div>
     </StaticPage>
