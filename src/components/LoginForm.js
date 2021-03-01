@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from "react-hook-form";
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { ROUTE_PASSWORD_RECOVERY, ROUTE_TO_CREATE_ACCOUNT } from '../constants/routes.js';
+import { ROUTE_PASSWORD_RECOVERY, routeToCreateAccount } from '../constants/routes.js';
 
 const LoginForm = ({ onFormSubmit, reqErrors }) => {
     const { register, handleSubmit, watch, errors } = useForm();
@@ -39,7 +39,7 @@ const LoginForm = ({ onFormSubmit, reqErrors }) => {
                 {/* <p className='formTip'>Must be minimum 6 characters long, with at least one capital letter and one number.</p> */}
                 
                 <button type="submit" className="button fill w-full">LOGIN</button>
-                <Link to={ROUTE_TO_CREATE_ACCOUNT} className='create_acc_link'>Don’t have an account?</Link>
+                <Link to={routeToCreateAccount('new')} className='create_acc_link'>Don’t have an account?</Link>
                 <Link to={ROUTE_PASSWORD_RECOVERY} className='create_acc_link'>Forgot your password?</Link>
             </form>
         </div>

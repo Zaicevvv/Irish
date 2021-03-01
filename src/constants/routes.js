@@ -1,6 +1,7 @@
 export const ROUTE_TO_ROOT = "/";
 export const ROUTE_TO_REMOTE_LEARNING = "/remote-learning";
-export const ROUTE_TO_CREATE_ACCOUNT = "/signup";
+export const ROUTE_TO_CREATE_ACCOUNT = "/signup/:remote?";
+export const routeToCreateAccount = (isRemout) => `/signup/${isRemout}`;
 export const ROUTE_TO_LOGIN = "/login";
 export const ROUTE_TO_SPONSORSHIP = "/sponsorship";
 export const ROUTE_TO_CONTACT = "/contact_us";
@@ -29,4 +30,5 @@ export const ROUTE_TO_LESSON_EDIT = "/admin/:course_id/lesson/:id?";
 export const routeToLessonEdit = (course_id, id) =>
   id ? `/admin/${course_id}/lesson/${id}` : `/admin/${course_id}/lesson/new`;
 export const ROUTE_TO_TESTIMONIALS = "/admin/testimonials";
-export const ROUTE_TO_TESTIMONIAL = "/admin/testimonial/:id";
+export const ROUTE_TO_TESTIMONIAL = "/admin/testimonial/:id?";
+export const routeToTestimonial = (id) => id ? `/admin/testimonial/${id}` : '/admin/testimonial/new';

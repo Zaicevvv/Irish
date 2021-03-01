@@ -11,23 +11,30 @@ import { setToken } from '../../../utils/tokenCRUD'
 import { setUser } from '../../../utils/currentUserCRUD'
 import history from '../../../history'
 
-const Signup = ({ onSubmit }) => {
+const Signup = ({ onSubmit, match }) => {
   const onFormSubmit = async (values) => {
-    const data = {
-      user: {
-        ...values
+    let data;
+    if (match.params.remote === 'remote') {
+      data = {
+        user: {
+          ...values,
+          remote_learning: true
+        }
+      }
+    } else {
+      data = {
+        user: {
+          ...values
+        }
       }
     }
+
     const response = await onSubmit(data)
     const { token, user } = response.value.data
 
     if (token) setToken(token)
     if (user) {
       setUser(user.id, user.role)
-      // if (!user.name) {
-      //   history.push(ROUTE_TO_PROFILE)
-      //   return false
-      // }
     }
     history.push(ROUTE_TO_PROFILE)
   }

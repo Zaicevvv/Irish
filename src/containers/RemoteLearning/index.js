@@ -15,9 +15,8 @@ import w_img5 from "../../assets/images/windpower/5.jpg";
 import w_img6 from "../../assets/images/windpower/6.jpg";
 import FeaturedLessons from "./components/FeaturedLessons";
 import { getCategoriesAction } from "../Landing/actions";
-import css from "./RemoteLearning.module.css";
 import {
-  ROUTE_TO_CREATE_ACCOUNT,
+  routeToCreateAccount,
   ROUTE_TO_DASHBOARD
 } from "../../constants/routes.js";
 
@@ -82,7 +81,7 @@ facts and real world application</li>
         </p>
           <div className="row hero_actions justify-center">
             <Link
-              to={ROUTE_TO_CREATE_ACCOUNT}
+              to={routeToCreateAccount('new')}
               className="button fill mr-10"
               style={{ marginBottom: "30px" }}
             >

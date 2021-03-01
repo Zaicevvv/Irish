@@ -10,6 +10,7 @@ export const EDIT_LESSON = "admin/edit_lesson";
 export const GET_USERS = "admin/get_cusers";
 export const DELETE_USER = "admin/delete_cuser";
 export const GET_FEEDBACKS = "admin/get_feedbacks";
+export const GET_FEEDBACK = "admin/get_feedback";
 export const CREATE_FEEDBACK = "admin/create_feedback";
 export const EDIT_FEEDBACK = "admin/edit_feedback";
 export const DELETE_FEEDBACK = "admin/delete_feedback";

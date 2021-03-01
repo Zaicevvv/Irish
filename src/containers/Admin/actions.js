@@ -16,6 +16,7 @@ import {
   CREATE_FEEDBACK,
   EDIT_FEEDBACK,
   DELETE_FEEDBACK,
+  GET_FEEDBACK
 } from "./constants";
 import {
   createCategoryApi,
@@ -33,6 +34,7 @@ import {
   addFeedbackApi,
   editFeedbackApi,
   deleteFeedbackApi,
+  getFeedbackApi
 } from "./api";
 
 export const createCategoryAction = createAction(
@@ -73,12 +75,15 @@ export const deleteUserAction = createAction(DELETE_USER, async (id) =>
 export const getFeedbacksAction = createAction(GET_FEEDBACKS, async () =>
   getFeedbacksApi()
 );
+export const getFeedbackAction = createAction(GET_FEEDBACK, async (id) =>
+  getFeedbackApi(id)
+);
 export const addFeedbackAction = createAction(CREATE_FEEDBACK, async (params) =>
   addFeedbackApi(params)
 );
-export const editFeedbackAction = createAction(EDIT_FEEDBACK, async () =>
-  editFeedbackApi()
+export const editFeedbackAction = createAction(EDIT_FEEDBACK, async (id, data) =>
+  editFeedbackApi(id, data)
 );
-export const deleteFeedbackAction = createAction(DELETE_FEEDBACK, async () =>
-  deleteFeedbackApi()
+export const deleteFeedbackAction = createAction(DELETE_FEEDBACK, async (id) =>
+  deleteFeedbackApi(id)
 );

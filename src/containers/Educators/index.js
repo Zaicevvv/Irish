@@ -5,7 +5,7 @@ import headerData from '../../constants/navData';
 import FloatIcons from '../../components/FloatIcons'
 import img from '../../assets/images/dest/educators.png'
 import { Link } from 'react-router-dom'
-import { ROUTE_TO_LOGIN, ROUTE_TO_CREATE_ACCOUNT } from '../../constants/routes.js';
+import {  routeToCreateAccount } from '../../constants/routes.js';
 
 
 const Educators = ({ user }) => {
@@ -41,7 +41,7 @@ const Educators = ({ user }) => {
             Packed with practical and engaging STEM based activities.
             </p>
           <div className="row hero_actions justify-center mb-30">
-            <Link to={ROUTE_TO_CREATE_ACCOUNT} className="button fill mr-10">ALL COURSES</Link>
+            <Link to={routeToCreateAccount('new')} className="button fill mr-10">ALL COURSES</Link>
           </div>
         </div>
       </section >

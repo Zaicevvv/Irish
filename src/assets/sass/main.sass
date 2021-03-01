@@ -543,6 +543,7 @@ ul.slick-dots
     height: 35px
     line-height: 35px
     margin-bottom: 42px
+    font-family: Arial
 .lesson_action_buttons
     margin-top: 65px
     a,button
@@ -1787,7 +1788,74 @@ blockquote
         background-color: transparent
         border-color: $accent
 .feedback_icon_cell
-        width: 30px
+    width: 30px
 .feedback_icon
     color: #0518b7
+.feedbacks_single_container
+    display: block
+    margin: 0 auto
+    width: 100%
+    max-width: 700px
+    margin-top: 70px
+    textarea
+        min-height: 150px
+.feedback_descr
+    text-overflow: ellipsis
+    overflow: hidden
+    width: 350px
+    height: 1.2em
+    white-space: nowrap
+    line-height: 1
+.feedback_name
+    text-overflow: ellipsis
+    overflow: hidden
+    width: 150px
+    height: 1.5em
+    white-space: nowrap
+    line-height: 1
+.feedback_item_actions
+    width: 300px
+    text-align: right
+    padding-right: 30px
+.feedbacklist_item
+    .edit
+        margin-right: 25px
+.feedbacks
+    text-align: center
+    padding: 50px 0
+    .slick-next, .slick-prev
+        color: $headercolor
+        top: 35%
+        font-size: 18px
+        text-transform: uppercase
+        &:hover
+            color: $headercolor
+    .slick-next
+        &::before
+            content: ""
+            display: inline-block
+            width: 1px
+            height: 100px
+            background-color: $headercolor
+            position: absolute
+            left: -25px
+            top: 0
+            transform: translateY(-50%)
+    .slick-prev
+        left: -35px
+        &::before
+            content: ""
+            display: inline-block
+            width: 1px
+            height: 100px
+            background-color: $headercolor
+            position: absolute
+            right: -50px
+            top: 0
+            transform: translateY(-50%)
+.feedback_item
+    margin: 0 auto
+    max-width: 960px
+.feedback_title
+    font-size: 24px
 @import media

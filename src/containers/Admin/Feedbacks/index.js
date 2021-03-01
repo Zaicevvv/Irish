@@ -33,25 +33,22 @@ const FeedbackList = ({
   }, []);
 
   const handlerDelete = async (id) => {
-    // await onDelete(id)
-    //     .then((res) => {
-    //         if (res.value.status == 200) {
-    //             successNotification('Testimonial was deleted.')
-    //             getFeedbacks()
-    //             setPopupShow()
-    //         }
-    //     })
-    //     .catch((error) => {
-    //         errorNotification(error)
-    //     })
+    await onDelete(id)
+        .then((res) => {
+            if (res.value.status == 200) {
+                successNotification('Testimonial was deleted.')
+                getFeedbacks()
+                setPopupShow()
+            }
+        })
+        .catch((error) => {
+            errorNotification(error)
+        })
   };
 
   return (
     <StaticPage pageClass="feedbacks_list" headerData={headerData.admin}>
       <div className="container">
-        <Link to={ROUTE_TO_TESTIMONIAL} className="add_testimonial_btn">
-          Add testimonial
-        </Link>
         <table className="feedbacks_table">
           {feedbacks
             && feedbacks.map((item, index) => {
@@ -76,9 +73,8 @@ const mapDispatchToProps = (dispatch) => ({
   getFeedbacks: (params) => dispatch(getFeedbacksAction(params)),
   onCreate: (params) => dispatch(addFeedbackAction(params)),
   onEdit: (id, data) => dispatch(editFeedbackAction(id, data)),
-  //   onDelete: (id) => dispatch(deleteFeedbackAction(id)),
-  successNotification: (message) =>
-    dispatch(successNotificationAction(message)),
+  onDelete: (id) => dispatch(deleteFeedbackAction(id)),
+  successNotification: (message) => dispatch(successNotificationAction(message)),
   errorNotification: (message) => dispatch(errorNotificationAction(message)),
 });
 

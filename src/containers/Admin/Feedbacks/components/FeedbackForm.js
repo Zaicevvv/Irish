@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import {
-  getFeedbacksAction,
+  getFeedbackAction,
   addFeedbackAction,
   editFeedbackAction,
 } from "../../actions";
@@ -15,50 +15,57 @@ import headerData from "../../../../constants/navData";
 import { ROUTE_TO_TESTIMONIALS } from "../../../../constants/routes";
 
 const FeedbackForm = ({
-  getFeedbacks,
+  getFeedback,
   onCreate,
   onEdit,
-  feedbacks,
+  feedback,
   errorNotification,
   successNotification,
   match,
 }) => {
   const [testimonial, setTestimonial] = useState({
     title: "",
-    description: "",
+    description: ""
   });
 
   useEffect(() => {
     if (match.params.id) {
-      getFeedbacks();
-
-      setTimeout(() => {setTestimonial(...feedbacks.find(el => el.id === Number(match.params.id)))}, [1000]);
+      getFeedback(match.params.id);
     }
-    // console.log(...feedbacks.find(el => el.id === Number(match.params.id)))
-    setTimeout(()=>{console.log(feedbacks)},[1000])
   }, []);
+
+  useEffect(() => {
+    if (match.params.id && match.params.id != 'new') {
+      setTestimonial(feedback);
+    } else {
+      setTestimonial({ title: "", description: "" });
+    }
+  }, [feedback, match.params.id]);
 
   const handleChange = (e) =>
     setTestimonial({ ...testimonial, [e.target.id]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(testimonial);
-    match.params.id
-      ? onEdit(match.params.id, { testimonial: testimonial })
-      : onCreate({ testimonial: testimonial });
+    if (match.params.id && match.params.id != 'new') {
+      onEdit(match.params.id, { testimonial: testimonial }).then((res) => {
+        if (res.value.status == 200) {
+          successNotification('Saved!');
+          setTimeout(() => { window.location.replace(ROUTE_TO_TESTIMONIALS) }, 500)
+        }
+      });
+    } else {
+      onCreate({ testimonial: testimonial }).then((res) => {
+        if (res.value.status == 200) {
+          successNotification('Saved!');
+          setTimeout(() => { window.location.replace(ROUTE_TO_TESTIMONIALS) }, 500)
+        }
+      });
+    }
   }
-  
-  // const handleSubmit = () => {
-  //   let body = new FormData();
-
-  //   body.append("testimonial", testimonial);
-
-  //   onCreate(body);
-  // };
 
   return (
-    <StaticPage pageClass="feedbacks_list" headerData={headerData.admin}>
+    <StaticPage pageClass="feedbacks_single" headerData={headerData.admin}>
       <div className="container">
         <form onSubmit={handleSubmit}>
           <div className="actionButtons">
@@ -66,30 +73,34 @@ const FeedbackForm = ({
               Cancel
             </Link>
             <button type="submit">
-              {match.params.id
-                ? "EDIT FEEDBACK"
-                : "ADD FEEDBACK"}
+              SAVE CHANGES
             </button>
           </div>
-          <h3>
-            {match.params.id
-              ? "Edit testimonial"
-              : "Create testimonial"}
-          </h3>
-          <input
-            id="title"
-            type="text"
-            placeholder="Your name"
-            value={testimonial.title}
-            onChange={handleChange}
-          />
-          <input
-            id="description"
-            type="text"
-            placeholder="Your feedback"
-            value={testimonial.description}
-            onChange={handleChange}
-          />
+          <div className="feedbacks_single_container">
+            <h3 className="courseFormName">
+              {match.params.id && match.params.id != 'new'
+                ? "Edit testimonial"
+                : "Create testimonial"}
+            </h3>
+            <input
+              id="title"
+              type="text"
+              placeholder="Your name"
+              required
+              value={testimonial?.title}
+              className="input_dark w-full"
+              onChange={handleChange}
+            />
+            <textarea
+              id="description"
+              type="text"
+              required
+              placeholder="Your feedback"
+              value={testimonial?.description}
+              className="input_dark w-full"
+              onChange={handleChange}
+            />
+          </div>
         </form>
       </div>
     </StaticPage>
@@ -97,7 +108,7 @@ const FeedbackForm = ({
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  getFeedbacks: (params) => dispatch(getFeedbacksAction(params)),
+  getFeedback: (id) => dispatch(getFeedbackAction(id)),
   onCreate: (params) => dispatch(addFeedbackAction(params)),
   onEdit: (id, data) => dispatch(editFeedbackAction(id, data)),
   successNotification: (message) =>
@@ -107,7 +118,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = ({ admin }) => {
   const data = {
-    feedbacks: admin.feedbacks,
+    feedback: admin.feedback,
   };
   return data;
 };

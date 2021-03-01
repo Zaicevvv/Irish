@@ -43,7 +43,6 @@ const SignupForm = ({ onFormSubmit, reqErrors }) => {
                         required: true,
                         pattern: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
                         validate: (value) => {
-                            console.log("SignupForm -> value", value)
                             const repeatEmailVal = getValues('email_repeat');
                             return value === repeatEmailVal;
                         }

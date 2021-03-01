@@ -2,7 +2,6 @@ import React from 'react'
 import { useForm } from "react-hook-form";
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { ROUTE_TO_ROOT, ROUTE_TO_CREATE_ACCOUNT } from '../constants/routes.js';
 import AvatarUpload from './AvatarUpload'
 
 const ProfileForm = ({ onFormSubmit, reqErrors, user }) => {

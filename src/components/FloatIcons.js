@@ -31,7 +31,7 @@ const FloatIcons = () => {
         <span className="float_icon" style={{ right: '-40px', bottom: '15%', width: '110px', transform: 'rotate(-25deg)' }}>
             <img src={bgIcon6} alt="#" />
         </span>
-          <span className="float_icon" style={{ left: '10%', bottom: '0%', width: '240px' }}>
+          <span className="float_icon m_hide" style={{ left: '10%', bottom: '0%', width: '240px' }}>
             <img src={bgIcon7} alt="#" />
         </span>
     </div>

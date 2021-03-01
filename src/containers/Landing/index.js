@@ -4,18 +4,21 @@ import { ROUTE_TO_SPONSORSHIP, ROUTE_TO_PRICING, ROUTE_TO_ABOUT_US, ROUTE_TO_CON
 import Hero from './components/Hero'
 import StudyInSystem from './components/StudyInSystem'
 import HowItWorks from './components/HowItWorks'
+import Feedbacks from './components/Feedbacks'
 import FeaturedLessons from './components/FeaturedLessons'
 import footerImg from '../../assets/images/dest/2@3x.png'
 import { connect } from 'react-redux';
 import { getCategoriesAction } from './actions'
+import { getFeedbacksAction } from '../../containers/Admin/actions'
 import StaticPage from '../../components/StaticPage';
 import headerData from '../../constants/navData';
 
 
-const Landing = ({ getCategories, courses, user }) => {
+const Landing = ({ getCategories, courses, user, getFeedbacks, feedbacks }) => {
 
 	useEffect(() => {
-		getCategories()
+		getCategories();
+		getFeedbacks();
 	}, [])
 
 	return (
@@ -30,6 +33,7 @@ const Landing = ({ getCategories, courses, user }) => {
 			</div>
 			<FeaturedLessons courses={courses} />
 			<HowItWorks />
+			<Feedbacks items={feedbacks} />
 
 			<section className="contact row justify-center align-center">
 				<div className="contac_descr">
@@ -92,11 +96,13 @@ const Landing = ({ getCategories, courses, user }) => {
 
 const mapDispatchToProps = (dispatch) => ({
 	getCategories: () => dispatch(getCategoriesAction()),
+	getFeedbacks: () => dispatch(getFeedbacksAction()),
 })
 
-const mapStateToProps = ({ landing: { courses }, auth: { user } }) => ({
+const mapStateToProps = ({ landing: { courses }, auth: { user }, admin: { feedbacks} }) => ({
 	courses,
-	user
+	user,
+	feedbacks
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing)

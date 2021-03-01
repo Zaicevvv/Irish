@@ -11,7 +11,8 @@ import {
   EDIT_LESSON,
   GET_USERS,
   DELETE_USER,
-  GET_FEEDBACKS
+  GET_FEEDBACKS,
+  GET_FEEDBACK
 } from './constants';
 import { sortTopicsAlphabetically, sortTopics, getLetters } from '../Dashboard/helpers';
 
@@ -23,6 +24,7 @@ export const initialState = {
   users: null,
   pages: null,
   feedbacks: null,
+  feedback: null,
   errors: [],
   letters: [],
 }
@@ -286,6 +288,28 @@ export default typeToReducer(
         return {
           ...state,
           feedbacks: action.payload.data.data.testimonials,
+          inProcess: false
+        }
+      },
+      FAIL: (state, action) => {
+        return {
+          ...state,
+          errors: action.payload.response.data.errors,
+          inProcess: false
+        }
+      }
+    },
+    [GET_FEEDBACK]: {
+      START: (state) => {
+        return {
+          ...state,
+          inProcess: true
+        }
+      },
+      SUCCESS: (state, action) => {
+        return {
+          ...state,
+          feedback: action.payload.data.data.testimonial,
           inProcess: false
         }
       },

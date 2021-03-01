@@ -12,6 +12,7 @@ export const editLessonApi = (id, data) => api.put(`/tutorials/${id}`, data);
 export const getUsersApi = (params) => api.get("/users", { params });
 export const deleteUserApi = (id) => api.delete(`/users/${id}`);
 export const getFeedbacksApi = () => api.get("/testimonials");
+export const getFeedbackApi = (id) => api.get(`/testimonials/${id}`);
 export const addFeedbackApi = (params) => api.post("/testimonials", params);
 export const editFeedbackApi = (id, data) =>
   api.put(`/testimonials/${id}`, data);

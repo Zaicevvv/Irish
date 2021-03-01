@@ -7,7 +7,7 @@ import { removeToken } from '../utils/tokenCRUD'
 import { removeUser } from '../utils/currentUserCRUD'
 import UserMenu from './UserMenu'
 import { Link } from 'react-router-dom'
-import { ROUTE_TO_CREATE_COURSE, ROUTE_TO_LOGIN } from '../constants/routes'
+import { ROUTE_TO_CREATE_COURSE, ROUTE_TO_LOGIN, routeToTestimonial } from '../constants/routes'
 import { logoutAction } from '../containers/Auth/actions'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
@@ -25,6 +25,8 @@ const SiteHeader = ({ children, additionaClassname, user, onLogout }) => {
       .catch((e) => console.error(e))
   }
 
+  const isFeedbackPage = window.location.href.includes('testimonial');
+
   return (
     <header className={`header ${additionaClassname || ''}`}>
       <div className='container'>
@@ -34,7 +36,8 @@ const SiteHeader = ({ children, additionaClassname, user, onLogout }) => {
             {children}
           </ul>
           {user && user.id && user.role != 'admin' && <UserMenu user={user} />}
-          {user && user.id && user.role === 'admin' && <Link to={ROUTE_TO_CREATE_COURSE} className='add_course_btn'> Add new courses</Link>}
+          {user && user.id && user.role === 'admin' && !isFeedbackPage && <Link to={ROUTE_TO_CREATE_COURSE} className='add_course_btn'> Add new courses</Link>}
+          {user && user.id && user.role === 'admin' && isFeedbackPage && <Link to={routeToTestimonial()} className='add_course_btn'> Add testimonial</Link>}
           {user && user.id && user.role === 'admin' && <a className='admin_logout' href='#' onClick={onLogoutHandler}><ExitToAppIcon /></a>}
           <div className="header_actions row justify-between align-center">
             <button type="button" className="button fill mr-10">SIGN IN </button>

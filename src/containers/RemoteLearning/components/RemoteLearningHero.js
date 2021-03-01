@@ -2,7 +2,7 @@ import React from "react";
 import FloatIcons from "../../../components/FloatIcons";
 import { Link } from "react-router-dom";
 import {
-  ROUTE_TO_CREATE_ACCOUNT,
+  routeToCreateAccount
 } from "../../../constants/routes.js";
 
 import heroLogo from "../../../assets/images/dest/logo.svg";
@@ -19,7 +19,7 @@ const RemoteLearningHero = () => {
           </p>
           <div className="row hero_actions justify-center">
             <Link
-              to={ROUTE_TO_CREATE_ACCOUNT}
+              to={routeToCreateAccount('remote')}
               className="button fill mr-10"
               style={{ marginBottom: "16px" }}
             >

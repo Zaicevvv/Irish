@@ -1,7 +1,7 @@
 import React from 'react'
 import FloatIcons from '../../../components/FloatIcons'
 import { Link } from 'react-router-dom'
-import { ROUTE_TO_LOGIN, ROUTE_TO_CREATE_ACCOUNT } from '../../../constants/routes.js';
+import { ROUTE_TO_LOGIN, routeToCreateAccount } from '../../../constants/routes.js';
 
 import heroLogo from '../../../assets/images/dest/logo.svg'
 const Hero = () => {
@@ -21,7 +21,7 @@ const Hero = () => {
                 </p>
                     <div className="row hero_actions justify-center">
                         <Link to={ROUTE_TO_LOGIN} className="button fill mr-10">SIGN IN</Link>
-                        <Link to={ROUTE_TO_CREATE_ACCOUNT} className="button empty">SIGN UP</Link>
+                        <Link to={routeToCreateAccount('new')} className="button empty">SIGN UP</Link>
                     </div>
                 </div>
             </div>

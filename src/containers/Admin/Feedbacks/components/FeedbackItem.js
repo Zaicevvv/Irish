@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import { routeToTestimonial } from '../../../../constants/routes'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import Create from '@material-ui/icons/Create';
 import Button from '@material-ui/core/Button';
@@ -25,14 +26,14 @@ const FeedbackItem = ({ item, index, handlerDelete, popupShow, setPopupShow }) =
                 <p className='feedback_name'>{item.title}</p>
             </td>
             <td>
-                <p className='feedback_email'>{item.description}</p>
+                <p className='feedback_descr'>{item.description}</p>
             </td>
             <td>
                 <p className='feedback_created'>{item.created_at}</p>
             </td>
             
             <td className='feedback_item_actions'>
-            <Link to={"/admin/testimonial/" + item.id} className="feedback_icon"><Create /></Link>
+                <Link to={routeToTestimonial(item.id)} className="feedback_icon edit"><Create /></Link>
                 <a href='#' className="feedback_icon" onClick={handleClickOpen} ><DeleteForeverIcon /></a>
             </td>
 
@@ -46,13 +47,13 @@ const FeedbackItem = ({ item, index, handlerDelete, popupShow, setPopupShow }) =
                 <DialogTitle id="alert-dialog-title">{"Are you sure?"}</DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        Delete "{`${item.first_name} ${item.last_name}`}"?
+                        Delete testimonial?
                 </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>
                         Disagree
-                </Button>
+                    </Button>
                     <Button onClick={() => handlerDelete(item.id)} color="secondary">
                         Delete
                 </Button>
